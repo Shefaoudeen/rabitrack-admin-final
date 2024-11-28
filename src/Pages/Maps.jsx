@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Map, GoogleApiWrapper, Marker, Circle } from "google-maps-react";
+import { GoogleMap, LoadScript, Marker, Circle } from "@react-google-maps/api";
 
 const Maps = (props) => {
   const [allMarker, setAllMarker] = useState([]);
+  const containerStyle = {
+    width: "100vw",
+    height: "80vh",
+  };
 
+  const center = {
+    lat: 11.9419659,
+    lng: 79.8062299,
+  };
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BASE_URL}/getCaseCountByAreas`)
@@ -18,6 +26,65 @@ const Maps = (props) => {
   }, []);
 
   return (
+    <LoadScript googleMapsApiKey={import.meta.env.VITE_MAP_API}>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
+        {allMarker.map((ele, index) => (
+          <Circle
+            key={`circle-${index}`}
+            radius={500}
+            options={{
+              strokeColor:
+                ele?.count > 10
+                  ? "#FF0000" // Red for high counts
+                  : ele?.count >= 5
+                  ? "#FFA500" // Orange for medium counts
+                  : "#00FF00", // Green for low counts
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor:
+                ele?.count > 10
+                  ? "#FF0000" // Same red for fill
+                  : ele?.count >= 5
+                  ? "#FFA500" // Same orange for fill
+                  : "#00FF00", // Same green for fill
+              fillOpacity: 0.35,
+            }}
+            center={{
+              lat: parseFloat(ele?.latitude),
+              lng: parseFloat(ele?.longitude),
+            }}
+          />
+        ))}
+        {allMarker.map((ele, index) => (
+          <Marker
+            key={`marker-${index}`}
+            position={{
+              lat: parseFloat(ele?.latitude),
+              lng: parseFloat(ele?.longitude),
+            }}
+            title={ele?.area}
+            label={{
+              text: String(ele?.count), // Show the count as a label
+              color: "black", // Text color
+              fontSize: "12px", // Font size
+              fontWeight: "bold", // Text weight
+            }}
+            icon={{
+              url:
+                ele?.count > 10
+                  ? "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+                  : ele?.count >= 5
+                  ? "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
+                  : "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+              scaledSize: new window.google.maps.Size(60, 60), // Adjust icon size
+            }}
+          />
+        ))}
+      </GoogleMap>
+    </LoadScript>
+  );
+  /*
+  return (
     <Map
       google={props.google}
       style={{ width: "100%", height: "100%" }}
@@ -28,7 +95,7 @@ const Maps = (props) => {
         lng: 79.8005759,
       }}
     >
-      {/* Render Circles */}
+      ###{/* Render Circles }
       {allMarker.map((ele, index) => (
         <Circle
           key={`circle-${index}`}
@@ -57,7 +124,7 @@ const Maps = (props) => {
         />
       ))}
 
-      {/* Render Markers */}
+      ###{/* Render Markers }
       {allMarker.map((ele, index) => (
         <Marker
           key={`marker-${index}`}
@@ -84,9 +151,13 @@ const Maps = (props) => {
         />
       ))}
     </Map>
-  );
+  );*/
 };
 
+export default Maps;
+
+/*
 export default GoogleApiWrapper({
   apiKey: import.meta.env.VITE_MAP_API,
 })(Maps);
+*/
