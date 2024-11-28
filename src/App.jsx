@@ -6,11 +6,13 @@ import ViewReports from "./Pages/ViewReports";
 import ViewCase from "./Pages/ViewCase";
 import Maps from "./Pages/Maps";
 import axios from "axios";
+import ScrollToTop from "./Components/ScrollToTop";
 axios.defaults.withCredentials = true;
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
