@@ -10,6 +10,7 @@ import {
 } from "recharts";
 
 import Spinner from '../Spinner'
+import { ScaleLoader } from "react-spinners";
 
 const BarGraph = () => {
   const [counts, setCounts] = useState([

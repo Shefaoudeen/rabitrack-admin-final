@@ -12,8 +12,9 @@ const Header = () => {
         <h1 className="max-md:text-xs text-center">
           Initiative by{" "}
           <a href="https://www.river.edu.in/" target="_blank">
-            Rajiv Gandhi Institute of Veterinary Education and Research (RIVER)
+          Rajiv Gandhi Institute of Veterinary Education and Research (RIVER-CVA) Rabies Diagnostic Laboratory,
           </a>
+          <h2>Department of Veterinary Public Health and Epidemiology</h2>
         </h1>
       </div>
       <div className="max-md:max-w-10">

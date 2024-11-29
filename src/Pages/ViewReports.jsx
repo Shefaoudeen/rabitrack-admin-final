@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../Components/Spinner";
+import { PulseLoader } from "react-spinners";
 
 const ViewReports = () => {
   const [allReports, SetAllReports] = useState([]);
@@ -54,7 +55,7 @@ const ViewReports = () => {
   return (
     <div className="flex flex-col items-center w-screen py-10">
       <h1 className="text-xl font-bold">REPORTS</h1>
-      { isLoading ? <div className="h-[30vw] flex items-center justify-center"><Spinner/></div> : <>
+      { isLoading ? <div className="h-[30vw] flex items-center justify-center"><PulseLoader color="#2f8afd" size={12}/></div> : <>
       {/*Filter sections */}
       <div className="py-5 flex md:gap-5 max-md:flex-col">
         <div className="flex items-center gap-4">
@@ -97,7 +98,7 @@ const ViewReports = () => {
         {allReports.map((cases, index) => (
           <div
             key={index}
-            className="min-w-[360px] border-2 p-5 rounded-xl bg-white shadow-2xl shadow-black/50"
+            className="min-w-[360px] border-2 p-5 rounded-xl bg-white shadow-2xl shadow-black/50  hover:border-black/50 duration-300"
           >
             <table className="mb-5">
               <tr className=" items-center">

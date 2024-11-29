@@ -54,7 +54,7 @@ const CaseDetails = ({id}) => {
             error ? <h2 className="text-red-500">{error}</h2> : <>
         {
           isLoading ? <Spinner/> : <>
-        <div className="flex flex-col items-center bg-white p-6 shadow-2xl border-2 shadow-black/20 rounded-2xl min-h-[400px]">
+        <div className="flex flex-col items-center bg-white p-6 shadow-2xl border-2 shadow-black/20 rounded-2xl">
           <h1 className="font-bold text-xl pb-5">Attacker Details</h1>
           <table className="border-separate border-spacing-x-5 border-spacing-y-2">
             <tr>
@@ -164,7 +164,7 @@ const CaseDetails = ({id}) => {
             </tr>
             <tr>
               <td className="font-semibold">Wound severity</td>
-              <td className={` text-center rounded-md ${victim?.wound_severity === "Mild" && "bg-green-400"} ${victim?.wound_severity === "Moderate" && "bg-orange-400"} ${victim?.wound_severity === "Severe" && "bg-red-400"}`}>
+              <td className={`text-center px-2 rounded-md ${victim?.wound_severity === "Mild" && "bg-green-400"} ${victim?.wound_severity === "Moderate" && "bg-orange-400"} ${victim?.wound_severity === "Severe" && "bg-red-400"}`}>
                 {victim?.wound_severity || "unknown"}
               </td>
             </tr>
@@ -185,8 +185,8 @@ const CaseDetails = ({id}) => {
           </table>
         </div>
 
-        <div className="flex flex-col gap-5">
-        <div className="flex flex-col items-center bg-white p-5 shadow-2xl border-2 shadow-black/20 rounded-2xl">
+        <div className="flex flex-col gap-2">
+        <div className="flex flex-1 flex-col items-center bg-white p-2 shadow-2xl border-2 shadow-black/20 rounded-2xl">
           <h1 className="font-bold text-xl pb-2 ">Doctor Treated</h1>
           <table className="border-separate border-spacing-x-5 border-spacing-y-2">
             <tr>
@@ -209,10 +209,14 @@ const CaseDetails = ({id}) => {
               <td className="font-semibold">District</td>
               <td>{doctor?.district}</td>
             </tr>
+            <tr>
+              <td className="font-semibold">Mobile no.</td>
+              <td>{doctor?.mobile_no || "unknown"}</td>
+            </tr>
           </table>
         </div>
 
-        <div className="flex flex-col items-center bg-white p-5 shadow-2xl border-2 shadow-black/20 rounded-2xl">
+        <div className="flex flex-1 flex-col items-center bg-white p-2 shadow-2xl border-2 shadow-black/20 rounded-2xl">
           <h1 className="font-bold text-xl pb-2">Owned by</h1>
           <table className="border-separate border-spacing-x-5 border-spacing-y-2">
             <tr>

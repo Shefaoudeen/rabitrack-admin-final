@@ -20,7 +20,7 @@ const Login = () => {
         setIsLoading(true)
         axios.post(`${import.meta.env.VITE_BASE_URL}/admin-login`, {username : username,password : password})
             .then((res) => {
-                res.data.isAuth ? navigate("/") : setError("username and password doesn't match")
+                res.data.isAuth ? navigate("/",{state : {isAuth : true}}) : setError("username and password doesn't match")
                 setIsLoading(false)
             })
             .catch(err => {setError(err.message + ", Please try again!"); setIsLoading(false)})
