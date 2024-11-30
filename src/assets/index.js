@@ -5,7 +5,6 @@ import DClogo from "./images/dc_logo.png";
 import petBG from "./images/pet-bg.jpg";
 import loginBG from "./images/login-bg.avif";
 import rabitrackLogo from "./images/rabitrack-logo.svg";
-import BackArrow from "./images/back-button.png";
 
 export {
   RiverLogo,
@@ -15,5 +14,4 @@ export {
   petBG,
   loginBG,
   rabitrackLogo,
-  BackArrow,
 };

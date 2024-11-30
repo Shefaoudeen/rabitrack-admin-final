@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Spinner from "../Components/Spinner";
 import { PulseLoader } from "react-spinners";
 import Papa from "papaparse";
-import { BackArrow } from "../assets";
+import { IoArrowBackCircleOutline  } from "react-icons/io5";
 import { MdDownload } from "react-icons/md";
 
 const ViewReports = () => {
@@ -82,9 +81,9 @@ const ViewReports = () => {
   };
   return (
     <div className="flex flex-col items-center w-screen py-10 relative">
-      <div className="absolute left-10 top-10 ">
+      <div className="absolute md:left-10 md:top-10 hover:scale-110 duration-300">
         <Link to={"/"} className="bg-slate-300 rounded-full">
-          <img src={BackArrow} width={30} />
+          <IoArrowBackCircleOutline  size={40} color="#3B82F6"/>
         </Link>
       </div>
       <h1 className="text-xl font-bold">REPORTS</h1>

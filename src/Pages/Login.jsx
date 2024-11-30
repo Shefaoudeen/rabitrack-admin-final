@@ -26,16 +26,17 @@ const Login = () => {
             .catch(err => {setError(err.message + ", Please try again!"); setIsLoading(false)})
     };
     return (
-        <div className="w-screen flex flex-col items-center justify-center text-xl select-none" style={{backgroundImage: `url(${loginBG})`}}>
-            <div className="bg-blue-100 rounded-lg flex flex-col gap-y-5 shadow-lg">
+        
+        <div className="w-screen flex flex-col items-center justify-center text-lg md:text-xl select-none" style={{backgroundImage: `url(${loginBG})`}}>
+            <div className="bg-blue-100 rounded-lg flex flex-col gap-y-5 shadow-lg max-w-[90%]">
                 <div className="flex items-center justify-center bg-blue-500 rounded-t-lg font-bold text-2xl py-4 overflow-hidden text-white text-center"><h1>Login</h1><RiLoginCircleLine size={30} className="ml-3 max-h-fit"/></div>
                 <div className="flex flex-col p-6 gap-y-5">
-                    <div className="flex items-center gap-x-4 py-2 px-4 rounded-full bg-white border-blue-500 focus-within:ring-2">
+                    <div className="flex items-center gap-2 md:gap-4 py-2 px-4 rounded-full bg-white border-blue-500 focus-within:ring-2">
                         <IoPerson/>
                         <input onChange={e => setUsername(e.target.value)} type="text" placeholder="Enter username" className=" ring-0 border-0 outline-0" />
                     </div>
-                    <div className="flex items-center justify-between gap-x-4 py-2 px-4 rounded-full bg-white border-blue-500 focus-within:ring-2">
-                        <div className="flex gap-4 items-center">
+                    <div className="flex items-center justify-between gap-2 md:gap-4 py-2 px-4 rounded-full bg-white border-blue-500 focus-within:ring-2">
+                        <div className="flex gap-2 md:gap-4 items-center">
                             <FaUnlock/>
                             <input onChange={e => setPassword(e.target.value)} onKeyDown={e => e.key==="Enter" && onLogin()} type={`${isPasswordHidden ? "password" : "text"}`} placeholder="Enter password" className=" ring-0 border-0 outline-0" />
                         </div>

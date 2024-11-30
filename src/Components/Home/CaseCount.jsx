@@ -35,7 +35,7 @@ const CaseCount = ({ caseCount }) => {
   };
 
   return (
-    <div className="bg-white shadow-xl drop-shadow-2xl shadow-blue-300 p-5 rounded-2xl w-[50%] flex flex-col items-center gap-5">
+    <div className="bg-white shadow-xl drop-shadow-2xl shadow-blue-300 p-5 rounded-2xl w-[70%] md:w-[50%] flex flex-col items-center gap-5">
       <div>
         <div className="min-w-[150px] max-h-[150px] max-w-[150px] min-h-[150px] border-4 border-blue-300  flex justify-center items-center rounded-full"><h1 className="font-bold text-4xl">{countTotal}</h1></div>
       </div>

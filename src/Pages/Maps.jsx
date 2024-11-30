@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { BackArrow } from "../assets";
 import { GoogleMap, LoadScript, Marker, Circle } from "@react-google-maps/api";
+import {IoArrowBackCircleOutline} from "react-icons/io5";
 
 const Maps = (props) => {
   const [allMarker, setAllMarker] = useState([]);
@@ -31,10 +31,10 @@ const Maps = (props) => {
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_MAP_API}>
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
-        <div className="absolute left-10 top-20 ">
-          <Link to={"/"} className="bg-slate-300 rounded-full">
-            <img src={BackArrow} width={30} />
-          </Link>
+        <div className="absolute md:left-10 md:top-20 ">
+        <Link to={"/"} className="bg-slate-300 rounded-full">
+          <IoArrowBackCircleOutline  size={40} color="#3B82F6"/>
+        </Link>
         </div>
         {allMarker.map((ele, index) => (
           <Circle

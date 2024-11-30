@@ -123,29 +123,32 @@ const BarGraph = () => {
         <YAxis dataKey="count" />
         <Tooltip cursor={false} />
       </BarChart>
-
+    <div className="w-[50vw] h-[70vh] md:hidden">
+    <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        width={450}
+        width={1000}
         height={400}
         data={allData}
         margin={{
           top: 5,
-          right: 20,
-          left: 20,
+          right: 10,
+          left: 10,
           bottom: 5,
         }}
-        className="px-10 md:hidden"
+        className="px-4"
       >
           <Bar
             dataKey="count"
             fill="#4682B4"
-            barSize={40}
+            barSize={30}
             animationDuration={1000}
           />
         <XAxis dataKey="month" />
         <YAxis dataKey="count" />
         <Tooltip cursor={false} />
       </BarChart>
+    </ResponsiveContainer>
+    </div>
     </>
   );
 };
