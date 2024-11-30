@@ -5,6 +5,7 @@ import Spinner from "../Components/Spinner";
 import { PulseLoader } from "react-spinners";
 import Papa from "papaparse";
 import { BackArrow } from "../assets";
+import { MdDownload } from "react-icons/md";
 
 const ViewReports = () => {
   const [allReports, SetAllReports] = useState([]);
@@ -96,7 +97,7 @@ const ViewReports = () => {
           {/*Filter sections */}
           <div className="py-5 flex md:gap-5 max-md:flex-col">
             <div
-              className={`w-[60vw] max-md:w-full flex max-md:${`flex-col gap-4`} justify-between items-center`}
+              className={`w-[60vw] max-md:w-full flex max-md:${`flex-col gap-4`} justify-center gap-10 items-center`}
             >
               <div className="max-md:hidden"></div>
               <div className="flex items-center gap-4">
@@ -122,8 +123,10 @@ const ViewReports = () => {
               <div>
                 <button
                   onClick={downloadCSV}
-                  className="bg-blue-500 text-white p-2 rounded-lg"
+                  className="bg-blue-500 text-white p-2 rounded-lg flex items-center gap-1"
+                  title={`download reports for ${district || "All districts"}`}
                 >
+                  <MdDownload size={25} />
                   Download CSV
                 </button>
               </div>
@@ -193,6 +196,7 @@ const ViewReports = () => {
               </div>
             ))}
           </div>
+          {/* pagination */}
           <div className="flex justify-center items-center gap-5 mt-10">
             <button
               onClick={onPrev}
@@ -219,7 +223,6 @@ const ViewReports = () => {
           </div>
         </>
       )}
-      {/* pagination */}
     </div>
   );
 };
