@@ -6,7 +6,13 @@ const Footer = () => {
   return (
     <div className="flex  justify-center items-center p-2 gap-8 bg-slate-200">
       <div>
-        <img src={AtalLogo} alt="" className="max-h-[75px]" />
+        <a
+          href="http://www.aicpecf.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={AtalLogo} alt="" className="max-h-[75px]" />
+        </a>
       </div>
       <div className="flex flex-col items-center">
         <h1 className="font-bold text-xl">Developed by </h1>
@@ -29,7 +35,13 @@ const Footer = () => {
         </h1>
       </div>
       <div>
-        <img src={DClogo} alt="" className="max-h-[75px]" />
+        <a
+          href="https://ptu-designclub.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={DClogo} alt="" className="max-h-[75px]" />
+        </a>
       </div>
     </div>
   );

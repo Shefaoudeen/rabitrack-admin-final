@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../Components/Spinner";
 import { PulseLoader } from "react-spinners";
 import Papa from "papaparse";
+import { BackArrow } from "../assets";
 
 const ViewReports = () => {
   const [allReports, SetAllReports] = useState([]);
@@ -79,7 +80,12 @@ const ViewReports = () => {
       });
   };
   return (
-    <div className="flex flex-col items-center w-screen py-10">
+    <div className="flex flex-col items-center w-screen py-10 relative">
+      <div className="absolute left-10 top-10 ">
+        <Link to={"/"} className="bg-slate-300 rounded-full">
+          <img src={BackArrow} width={30} />
+        </Link>
+      </div>
       <h1 className="text-xl font-bold">REPORTS</h1>
       {isLoading ? (
         <div className="h-[30vw] flex items-center justify-center">

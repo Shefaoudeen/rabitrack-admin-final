@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { BackArrow } from "../assets";
 import { GoogleMap, LoadScript, Marker, Circle } from "@react-google-maps/api";
 
 const Maps = (props) => {
   const [allMarker, setAllMarker] = useState([]);
   const containerStyle = {
-    width: "100vw",
-    height: "80vh",
+    width: "100dvw",
+    height: "75dvh",
+    position: "absolute",
   };
 
   const center = {
@@ -28,6 +31,11 @@ const Maps = (props) => {
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_MAP_API}>
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
+        <div className="absolute left-10 top-20 ">
+          <Link to={"/"} className="bg-slate-300 rounded-full">
+            <img src={BackArrow} width={30} />
+          </Link>
+        </div>
         {allMarker.map((ele, index) => (
           <Circle
             key={`circle-${index}`}

@@ -5,5 +5,15 @@ import DClogo from "./images/dc_logo.png";
 import petBG from "./images/pet-bg.jpg";
 import loginBG from "./images/login-bg.avif";
 import rabitrackLogo from "./images/rabitrack-logo.svg";
+import BackArrow from "./images/back-button.png";
 
-export { RiverLogo, GovtLogo, AtalLogo, DClogo,petBG,loginBG,rabitrackLogo };
+export {
+  RiverLogo,
+  GovtLogo,
+  AtalLogo,
+  DClogo,
+  petBG,
+  loginBG,
+  rabitrackLogo,
+  BackArrow,
+};

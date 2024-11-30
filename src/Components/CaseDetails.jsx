@@ -1,4 +1,6 @@
 import axios from "axios";
+import { BackArrow } from "../assets";
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Spinner from "./Spinner";
 
@@ -47,7 +49,12 @@ const CaseDetails = ({ id }) => {
   }
 
   return (
-    <div className="flex justify-center items-center w-full gap-10 max-md:flex-col max-md:py-10">
+    <div className="flex justify-center items-center w-full gap-10 max-md:flex-col max-md:py-10 relative">
+      <div className="absolute left-10 top-10 ">
+        <Link to={"/reports"} className="bg-slate-300 rounded-full">
+          <img src={BackArrow} width={30} />
+        </Link>
+      </div>
       {error ? (
         <h2 className="text-red-500">{error}</h2>
       ) : (
