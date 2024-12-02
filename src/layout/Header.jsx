@@ -32,7 +32,7 @@ const Header = () => {
           <h2>Department of Veterinary Public Health and Epidemiology</h2>
         </h1>
       </div>
-      <div className="max-md:max-w-10">
+      <div className="max-md:max-w-20">
         <img src={RiverLogo} alt="" className="max-h-[100px]" />
       </div>
     </div>

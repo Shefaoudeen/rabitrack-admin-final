@@ -24,14 +24,14 @@ const CaseDetails = ({ id }) => {
         setCaseReport(res.data || {});
         setIsLoading(false);
         setOwner(res.data.owner);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
         err.status === 404
           ? setError("No cases were found on the given case ID!")
-          : setError("Something went wrong!");
+          : setError(err.message + ", Please try again!");
       });
   }, [id]);
 

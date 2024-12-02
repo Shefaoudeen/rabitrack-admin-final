@@ -21,7 +21,7 @@ const Maps = (props) => {
       .get(`${import.meta.env.VITE_BASE_URL}/getCaseCountByAreas`)
       .then((res) => {
         setAllMarker(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

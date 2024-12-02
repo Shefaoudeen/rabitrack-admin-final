@@ -71,7 +71,7 @@ const HomePage = () => {
 
   function onLogout() {
     setPageLoading(true);
-    setWelcomeMessage("Loggin out");
+    setWelcomeMessage("Logging out");
     axios
       .post(`${import.meta.env.VITE_BASE_URL}/logout`)
       .then((res) => {
@@ -101,7 +101,7 @@ const HomePage = () => {
       })
       .catch((err) => {
         console.log(err);
-        setPageLoading(false);
+        setWelcomeMessage("Something went wrong, Please reload this page!")
         if (err.response.status === 401) navigate("/login");
       });
   }, []);
@@ -111,8 +111,8 @@ const HomePage = () => {
       {isPageLoading ? (
         <div className="flex flex-1 flex-col gap-5 items-center justify-center w-screen">
           <img src={rabitrackLogo} alt="logo" className="w-12" />
-          <h1 className="text-2xl">{welcomeMessage}</h1>
-          <BarLoader color="#2f8afd" />
+          <h1 className={`text-lg md:text-2xl text-center ${welcomeMessage.charAt(0) === 'S' && "text-red-500 md:text-lg"}`}>{welcomeMessage}</h1>
+          {welcomeMessage.charAt(0) === 'S' || <BarLoader color="#2f8afd" />}
         </div>
       ) : (
         <>
@@ -151,15 +151,15 @@ const HomePage = () => {
           </div>
 
           {/* search case by ID */}
-          <div className="flex flex-col justify-center items-center min-w-[50vw] max-md:max-w-[80vw] mt-24 mb-16 gap-4 bg-blue-100/30 shadow-lg p-10 rounded-xl border-2">
+          <div className="flex flex-col justify-center items-center md:min-w-[50vw] min-w-[90vw] max-md:max-w-[80vw] mt-24 mb-16 gap-4 bg-blue-100/30 shadow-lg md:p-10 p-4 rounded-xl border-2">
             <h1 className="text-lg">Get a particular case details</h1>
-            <div className="flex gap-5 items-center">
+            <div className="flex w-full flex-col md:flex-row gap-5 items-center">
               <input
                 placeholder="Enter a case ID"
                 type="text"
                 onKeyDown={(e) => e.key === "Enter" && setCaseID(inputCaseID)}
                 onChange={(e) => setInputCaseID(e.target.value)}
-                className="w-96 max-md:w-[75%] rounded-md border-2 border-black/30 py-1 px-2"
+                className="w-full md:w-[450px] rounded-md border-2 border-black/30 py-1 px-2"
               />
               <button
                 className="px-6 py-1 text-lg bg-blue-500 text-white rounded-full"
