@@ -153,7 +153,7 @@ const HomePage = () => {
           {/* search case by ID */}
           <div className="flex flex-col justify-center items-center md:min-w-[50vw] min-w-[90vw] max-md:max-w-[80vw] mt-24 mb-16 gap-4 bg-blue-100/30 shadow-lg md:p-10 p-4 rounded-xl border-2">
             <h1 className="text-lg">Get a particular case details</h1>
-            <div className="flex w-full flex-col md:flex-row gap-5 items-center">
+            <div className="flex w-full flex-col md:flex-row gap-5 justify-center items-center">
               <input
                 placeholder="Enter a case ID"
                 type="text"

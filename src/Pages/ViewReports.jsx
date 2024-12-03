@@ -26,6 +26,7 @@ const ViewReports = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const URL = `${import.meta.env.VITE_BASE_URL}/getCases?page=${page}&district=${filter.district}&year=${filter.year}&month=${filter.month}`
@@ -45,11 +46,12 @@ const ViewReports = () => {
       })
       .catch((err) => {
         console.log(err);
-        if (err.status == 404)
-          setError("No cases found!");
-        else
-          setError("Something went Wrong, Please reload this page!");
         setIsLoading(false)
+        if (err.status == 404)
+          return setError("No cases found!");
+        if (err.status == 401)
+          return navigate('/login')
+        setError("Something went Wrong, Please reload this page!");
       });
   }, [page, filter]);
 
@@ -147,8 +149,8 @@ const ViewReports = () => {
               {/* filter button */}
               {/* <button className={`text-md bg-blue-500 text-white py-2 px-3 rounded-xl hover:bg-blue-400 duration-300`}>Filter</button> */}
               <div className="flex w-full md:w-auto md:gap-4 justify-between">
-              <button onClick={downloadCSV} className="bg-blue-500 text-white p-2 rounded-lg flex items-center gap-1" title={`download reports for ${filter.district || "All districts"} ${filter.year} ${filter.month}`}>
-                <MdDownload size={25} />
+              <button onClick={downloadCSV} className="group bg-blue-500 duration-300 text-white p-2 rounded-lg flex items-center gap-1" title={`download reports for ${filter.district || "All districts"} ${filter.year} ${filter.month}`}>
+                <MdDownload size={25} className="group-hover:scale-110 duration-300"/>
                 Download CSV
               </button>
               {(filter.district || filter.year) && (

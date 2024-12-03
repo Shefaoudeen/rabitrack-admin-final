@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Spinner from "./Spinner";
 
@@ -12,6 +12,7 @@ const CaseDetails = ({ id }) => {
   const [doctor, setDoctor] = useState({});
   const [owner, setOwner] = useState({});
   const [doseDetails, setDoseDetails] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     //setting defaults on each change in input
@@ -29,9 +30,11 @@ const CaseDetails = ({ id }) => {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-        err.status === 404
-          ? setError("No cases were found on the given case ID!")
-          : setError(err.message + ", Please try again!");
+        if (err.status === 404)
+          return setError("No cases were found on the given case ID!");
+        if (err.status === 401)
+          return navigate('/login')
+        setError("Something went Wrong, Please reload this page!");
       });
   }, [id]);
 
@@ -57,9 +60,9 @@ const CaseDetails = ({ id }) => {
             <Spinner />
           ) : (
             <>
-              <div className="flex flex-col items-center bg-white p-6 shadow-2xl border-2 shadow-black/20 rounded-2xl">
-                <h1 className="font-bold text-xl pb-5">Attacker Details</h1>
-                <table className="border-separate border-spacing-x-5 border-spacing-y-2">
+              <div className="flex flex-col items-center  bg-white p-6 shadow-2xl border-2 shadow-black/20 rounded-2xl">
+                <h1 className="font-bold text-lg md:text-xl pb-5">Attacker Details</h1>
+                <table className="border-separate max-sm:text-sm border-spacing-x-5 border-spacing-y-2">
                   <tr>
                     <td className="font-semibold">Species</td>
                     <td>
@@ -131,8 +134,8 @@ const CaseDetails = ({ id }) => {
                 </table>
               </div>
               <div className="flex flex-col items-center bg-white p-6 shadow-2xl border-2 shadow-black/20 rounded-2xl max-md:mx-4 max-md:p-2">
-                <h1 className="font-bold text-xl pb-5">Victim Details</h1>
-                <table className="border-separate border-spacing-x-5 border-spacing-y-2">
+                <h1 className="font-bold text-lg md:text-xl pb-5">Victim Details</h1>
+                <table className="border-separate max-sm:text-sm border-spacing-x-5 border-spacing-y-2">
                   <tr>
                     <td className="font-semibold">Species</td>
                     <td>
@@ -216,8 +219,8 @@ const CaseDetails = ({ id }) => {
 
               <div className="flex flex-col gap-2">
                 <div className="flex flex-1 flex-col items-center bg-white p-2 shadow-2xl border-2 shadow-black/20 rounded-2xl">
-                  <h1 className="font-bold text-xl pb-2 ">Doctor Treated</h1>
-                  <table className="border-separate border-spacing-x-5 border-spacing-y-2">
+                  <h1 className="font-bold text-lg md:text-xl pb-2 ">Doctor Treated</h1>
+                  <table className="border-separate max-sm:text-sm border-spacing-x-5 border-spacing-y-2">
                     <tr>
                       <td className="font-semibold">Name</td>
                       <td>{doctor?.doctor_name}</td>
@@ -246,8 +249,8 @@ const CaseDetails = ({ id }) => {
                 </div>
 
                 <div className="flex flex-1 flex-col items-center bg-white p-2 shadow-2xl border-2 shadow-black/20 rounded-2xl">
-                  <h1 className="font-bold text-xl pb-2">Owned by</h1>
-                  <table className="border-separate border-spacing-x-5 border-spacing-y-2">
+                  <h1 className="font-bold text-lg md:text-xl pb-2">Owned by</h1>
+                  <table className="border-separate max-sm:text-sm border-spacing-x-5 border-spacing-y-2">
                     <tr>
                       <td className="font-semibold">Name</td>
                       <td>{owner?.name}</td>

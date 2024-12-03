@@ -31,11 +31,11 @@ const Maps = (props) => {
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_MAP_API}>
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
-        <div className="absolute md:left-10 md:top-20 ">
+        {/* <div className="absolute md:left-10 md:top-20 ">
         <Link to={"/"} className="bg-slate-300 rounded-full">
           <IoArrowBackCircleOutline  size={40} color="#3B82F6"/>
         </Link>
-        </div>
+        </div> */}
         {allMarker.map((ele, index) => (
           <Circle
             key={`circle-${index}`}
